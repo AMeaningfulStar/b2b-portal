@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
-import { SiteFooter } from '@components/landing/site-footer'
-import { SiteHeader } from '@components/landing/site-header'
+import { SiteFooter } from '@/components/landing/site-footer'
+import { SiteHeader } from '@/components/landing/site-header'
 
 interface LandingLayoutProps {
   children: ReactNode
