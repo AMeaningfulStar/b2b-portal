@@ -1,88 +1,57 @@
 import { Mail, MapPin, Phone } from 'lucide-react'
 
-const footerLinks = {
-  Services: [
-    { label: 'Electronic Components', href: '#services' },
-    { label: 'Scrap & PCB Purchase', href: '#services' },
-    { label: 'Data Destruction', href: '#services' },
-    { label: 'IT Equipment Buyback', href: '#services' },
-  ],
-  Company: [
-    { label: 'About Us', href: '#hero' },
-    { label: 'Our Process', href: '#process' },
-    { label: 'Certifications', href: '#security' },
-    { label: 'Portfolio', href: '#portfolio' },
-  ],
-  Support: [
-    { label: 'FAQ', href: '#faq' },
-    { label: 'Contact Us', href: '#contact' },
-    { label: 'Get a Quote', href: '#contact' },
-    { label: 'Location', href: '#location' },
-  ],
-}
-
 export function SiteFooter() {
   return (
-    <footer className="bg-primary py-12 lg:py-16">
-      <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-5">
-          <div className="lg:col-span-2">
-            <div className="mb-4 flex items-center gap-2">
-              <div className="bg-accent flex h-9 w-9 items-center justify-center rounded-lg">
-                <span className="text-accent-foreground text-sm font-bold">GC</span>
-              </div>
-              <span className="text-primary-foreground text-lg font-bold">GreenCore Tech</span>
+    <footer className="bg-gray-900 text-gray-400">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+          <div>
+            <h3 className="mb-4 text-base font-bold text-white">(브랜드명)</h3>
+            <div className="space-y-2 text-sm">
+              <p>상호: (주)브랜드명</p>
+              <p>대표: 홍길동</p>
+              <p>사업자번호: 000-00-00000</p>
             </div>
-            <p className="text-primary-foreground/70 mb-6 max-w-sm text-sm leading-relaxed">
-              Korea&apos;s trusted partner for electronic scrap purchasing, PCB recycling, and certified data
-              destruction. Serving corporations nationwide with security, compliance, and environmental responsibility.
-            </p>
-            <div className="flex flex-col gap-3">
-              <div className="text-primary-foreground/70 flex items-center gap-2 text-sm">
-                <Phone className="text-accent h-4 w-4" />
-                02-1234-5678
+          </div>
+
+          <div>
+            <h3 className="mb-4 text-base font-bold text-white">연락처</h3>
+            <div className="space-y-2 text-sm">
+              <div className="flex items-center gap-2">
+                <Phone className="h-4 w-4" />
+                <span>02-0000-0000</span>
               </div>
-              <div className="text-primary-foreground/70 flex items-center gap-2 text-sm">
-                <Mail className="text-accent h-4 w-4" />
-                info@greencore.co.kr
+              <div className="flex items-center gap-2">
+                <Mail className="h-4 w-4" />
+                <span>contact@example.com</span>
               </div>
-              <div className="text-primary-foreground/70 flex items-center gap-2 text-sm">
-                <MapPin className="text-accent h-4 w-4" />
-                Incheon Free Economic Zone, Korea
+              <div className="flex items-center gap-2">
+                <MapPin className="h-4 w-4" />
+                <span>서울특별시 강남구 테헤란로 000</span>
               </div>
             </div>
           </div>
 
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
-              <h3 className="text-primary-foreground mb-4 text-sm font-semibold tracking-widest uppercase">{title}</h3>
-              <ul className="flex flex-col gap-2.5">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-primary-foreground/60 hover:text-accent text-sm transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          <div>
+            <h3 className="mb-4 text-base font-bold text-white">상담 시간</h3>
+            <div className="space-y-2 text-sm">
+              <p>평일: 09:00 - 18:00</p>
+              <p>주말 및 공휴일: 휴무</p>
             </div>
-          ))}
+          </div>
         </div>
 
-        <div className="border-primary-foreground/10 mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 sm:flex-row">
-          <p className="text-primary-foreground/50 text-xs">
-            &copy; {new Date().getFullYear()} GreenCore Tech. All rights reserved.
-          </p>
-          <div className="flex gap-4">
-            <a href="#" className="text-primary-foreground/50 hover:text-accent text-xs">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-primary-foreground/50 hover:text-accent text-xs">
-              Terms of Service
-            </a>
+        <div className="mt-12 border-t border-gray-800 pt-8">
+          <div className="flex flex-col items-center justify-between gap-4 text-sm md:flex-row">
+            <p>&copy; 2026 (브랜드명). All rights reserved.</p>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-white">
+                개인정보처리방침
+              </a>
+              <a href="#" className="hover:text-white">
+                이용약관
+              </a>
+            </div>
           </div>
         </div>
       </div>

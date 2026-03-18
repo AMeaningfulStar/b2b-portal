@@ -1,139 +1,114 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { Menu, MessageCircle, Phone } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { Menu, Phone, X } from 'lucide-react'
+import { useState } from 'react'
 
-const NAV_ITEMS = [
-  { label: 'Home', href: '#hero' },
-  { label: 'Services', href: '#services' },
-  { label: 'Process', href: '#process' },
-  { label: 'Security', href: '#security' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Contact', href: '#contact' },
+import { Button } from '@/components/ui/button'
+
+const menuItems = [
+  { label: '홈', href: '#home' },
+  { label: '회사소개', href: '#about' },
+  { label: '사업분야', href: '#services' },
+  { label: '처리절차', href: '#process' },
+  { label: '견적문의', href: '#quote' },
 ]
 
 export function SiteHeader() {
-  const [activeSection, setActiveSection] = useState('hero')
-  const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-
-      const sections = NAV_ITEMS.map((item) => item.href.replace('#', ''))
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i])
-        if (el) {
-          const rect = el.getBoundingClientRect()
-          if (rect.top <= 100) {
-            setActiveSection(sections[i])
-            break
-          }
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header
-      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-card/95 border-border border-b shadow-sm backdrop-blur-md' : 'bg-transparent'
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:px-8">
-        <a href="#hero" className="flex items-center gap-2">
-          <div className="bg-primary flex h-9 w-9 items-center justify-center rounded-lg">
-            <span className="text-primary-foreground text-sm font-bold">GC</span>
+    <header className="fixed top-0 right-0 left-0 z-50 border-b border-gray-200 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="flex h-14 items-center justify-between">
+          <div className="flex items-center">
+            <a href="#home" className="text-lg font-bold tracking-tight text-gray-900">
+              (브랜드명)
+            </a>
           </div>
-          <span
-            className={`text-lg font-bold transition-colors ${scrolled ? 'text-foreground' : 'text-card-foreground'}`}
-          >
-            GreenCore Tech
-          </span>
-        </a>
 
-        <nav className="hidden items-center gap-1 lg:flex">
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                activeSection === item.href.replace('#', '')
-                  ? 'text-accent'
-                  : scrolled
-                    ? 'text-muted-foreground hover:text-foreground'
-                    : 'text-muted-foreground hover:text-foreground'
-              }`}
+          <nav className="hidden items-center space-x-8 md:flex">
+            {menuItems.map((item) => (
+              <a key={item.label} href={item.href} className="text-sm font-medium text-gray-700 hover:text-gray-900">
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden items-center space-x-3 md:flex">
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-sm"
+              onClick={() => {
+                window.location.href = 'tel:02-0000-0000'
+              }}
             >
-              {item.label}
-            </a>
-          ))}
-        </nav>
+              <Phone className="mr-1 h-4 w-4" />
+              02-0000-0000
+            </Button>
 
-        <div className="hidden items-center gap-2 lg:flex">
-          <Button variant="outline" size="sm" asChild>
-            <a href="tel:+8210-0000-0000">
-              <Phone className="mr-1.5 h-4 w-4" />
-              Call
-            </a>
-          </Button>
-          <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-            <a href="#contact">
-              <MessageCircle className="mr-1.5 h-4 w-4" />
-              Get Quote
-            </a>
-          </Button>
+            <Button
+              size="sm"
+              className="bg-[#003d82] text-sm text-white hover:bg-[#002a5c]"
+              onClick={() => {
+                document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+            >
+              견적문의
+            </Button>
+          </div>
+
+          <button
+            type="button"
+            className="p-2 md:hidden"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            aria-label="모바일 메뉴 열기"
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
 
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild className="lg:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="bg-card w-72">
-            <div className="flex flex-col gap-6 pt-8">
-              <nav className="flex flex-col gap-1">
-                {NAV_ITEMS.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors ${
-                      activeSection === item.href.replace('#', '')
-                        ? 'bg-accent/10 text-accent'
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-              <div className="flex flex-col gap-2 px-3">
-                <Button variant="outline" size="sm" asChild>
-                  <a href="tel:+8210-0000-0000">
-                    <Phone className="mr-1.5 h-4 w-4" />
-                    Call Now
-                  </a>
+        {isMenuOpen && (
+          <div className="border-t border-gray-200 py-4 md:hidden">
+            <nav className="flex flex-col space-y-3">
+              {menuItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-sm font-medium text-gray-700 hover:text-gray-900"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
+
+              <div className="flex flex-col space-y-2 border-t border-gray-200 pt-3">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    window.location.href = 'tel:02-0000-0000'
+                  }}
+                >
+                  <Phone className="mr-1 h-4 w-4" />
+                  02-0000-0000
                 </Button>
-                <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                  <a href="#contact" onClick={() => setOpen(false)}>
-                    <MessageCircle className="mr-1.5 h-4 w-4" />
-                    Get Quote
-                  </a>
+
+                <Button
+                  size="sm"
+                  className="bg-[#003d82] text-white hover:bg-[#002a5c]"
+                  onClick={() => {
+                    document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' })
+                    setIsMenuOpen(false)
+                  }}
+                >
+                  견적문의
                 </Button>
               </div>
-            </div>
-          </SheetContent>
-        </Sheet>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   )
