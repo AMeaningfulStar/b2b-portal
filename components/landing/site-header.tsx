@@ -1,22 +1,22 @@
-"use client"
+'use client'
 
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, MessageCircle, Phone } from "lucide-react"
-import { useEffect, useState } from "react"
+import { Button } from '@/components/ui/button'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { Menu, MessageCircle, Phone } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 const NAV_ITEMS = [
-  { label: "Home", href: "#hero" },
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Security", href: "#security" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: 'Home', href: '#hero' },
+  { label: 'Services', href: '#services' },
+  { label: 'Process', href: '#process' },
+  { label: 'Security', href: '#security' },
+  { label: 'Portfolio', href: '#portfolio' },
+  { label: 'FAQ', href: '#faq' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export function SiteHeader() {
-  const [activeSection, setActiveSection] = useState("hero")
+  const [activeSection, setActiveSection] = useState('hero')
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -24,7 +24,7 @@ export function SiteHeader() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
 
-      const sections = NAV_ITEMS.map((item) => item.href.replace("#", ""))
+      const sections = NAV_ITEMS.map((item) => item.href.replace('#', ''))
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i])
         if (el) {
@@ -37,27 +37,23 @@ export function SiteHeader() {
       }
     }
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-card/95 backdrop-blur-md shadow-sm border-b border-border"
-          : "bg-transparent"
+      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-card/95 border-border border-b shadow-sm backdrop-blur-md' : 'bg-transparent'
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:px-8">
         <a href="#hero" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <span className="text-sm font-bold text-primary-foreground">GC</span>
+          <div className="bg-primary flex h-9 w-9 items-center justify-center rounded-lg">
+            <span className="text-primary-foreground text-sm font-bold">GC</span>
           </div>
           <span
-            className={`text-lg font-bold transition-colors ${
-              scrolled ? "text-foreground" : "text-card-foreground"
-            }`}
+            className={`text-lg font-bold transition-colors ${scrolled ? 'text-foreground' : 'text-card-foreground'}`}
           >
             GreenCore Tech
           </span>
@@ -69,11 +65,11 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                activeSection === item.href.replace("#", "")
-                  ? "text-accent"
+                activeSection === item.href.replace('#', '')
+                  ? 'text-accent'
                   : scrolled
-                    ? "text-muted-foreground hover:text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? 'text-muted-foreground hover:text-foreground'
+                    : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               {item.label}
@@ -103,7 +99,7 @@ export function SiteHeader() {
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-72 bg-card">
+          <SheetContent side="right" className="bg-card w-72">
             <div className="flex flex-col gap-6 pt-8">
               <nav className="flex flex-col gap-1">
                 {NAV_ITEMS.map((item) => (
@@ -112,9 +108,9 @@ export function SiteHeader() {
                     href={item.href}
                     onClick={() => setOpen(false)}
                     className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors ${
-                      activeSection === item.href.replace("#", "")
-                        ? "bg-accent/10 text-accent"
-                        : "text-muted-foreground hover:text-foreground"
+                      activeSection === item.href.replace('#', '')
+                        ? 'bg-accent/10 text-accent'
+                        : 'text-muted-foreground hover:text-foreground'
                     }`}
                   >
                     {item.label}

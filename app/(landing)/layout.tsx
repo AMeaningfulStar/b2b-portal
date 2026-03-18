@@ -9,7 +9,7 @@ interface LandingLayoutProps {
 
 export default function LandingLayout({ children }: LandingLayoutProps) {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="bg-background text-foreground min-h-screen">
       <SiteHeader />
       <main className="pt-16">{children}</main>
       <SiteFooter />
