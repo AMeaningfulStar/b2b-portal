@@ -1,3 +1,4 @@
+import SideNav from '@/components/common/side-nav'
 import HeroSection from '@/components/sections/hero-section'
 import ProcessSummarySection from '@/components/sections/process-summary-section'
 import QuoteSummarySection from '@/components/sections/quote-summary-section'
@@ -7,6 +8,8 @@ import ServicesSummarySection from '@/components/sections/services-summary-secti
 export default function LandingPage() {
   return (
     <>
+      <SideNav />
+
       <HeroSection />
       <ServicesSummarySection />
       <ProcessSummarySection />
