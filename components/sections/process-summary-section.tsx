@@ -1,6 +1,9 @@
+'use client'
+
 import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
+import { useScrollAnimation } from '@/hooks/use-scroll-animation'
 
 const steps = [
   { title: '문의 접수', description: '처리 품목과 물량, 일정을 확인합니다.' },
@@ -10,8 +13,16 @@ const steps = [
 ]
 
 export default function ProcessSummarySection() {
+  const { ref, isVisible } = useScrollAnimation()
+
   return (
-    <section id="process" className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-20">
+    <section
+      id="process"
+      ref={ref}
+      className={`flex min-h-screen items-center justify-center bg-gray-50 px-4 py-20 transition-[opacity,transform] duration-700 ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+      }`}
+    >
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 flex items-end justify-between gap-4">
           <div>

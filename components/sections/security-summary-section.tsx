@@ -1,8 +1,20 @@
+'use client'
+
+import { useScrollAnimation } from '@/hooks/use-scroll-animation'
+
 export default function SecuritySummarySection() {
+  const { ref, isVisible } = useScrollAnimation()
+
   const items = ['저장매체 보안파쇄 대응', '기업 자산 처리 기준 준수', '민감 정보 보호 중심 처리']
 
   return (
-    <section id="security" className="flex min-h-screen items-center justify-center bg-white px-4 py-20">
+    <section
+      id="security"
+      ref={ref}
+      className={`flex min-h-screen items-center justify-center bg-white px-4 py-20 transition-[opacity,transform] duration-700 ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+      }`}
+    >
       <div className="mx-auto max-w-6xl rounded-2xl bg-[#0f172a] px-6 py-12 text-white md:px-10">
         <p className="mb-2 text-sm font-semibold text-blue-300">보안관리</p>
         <h2 className="text-3xl leading-tight font-bold">신뢰할 수 있는 보안 기준으로 처리합니다</h2>

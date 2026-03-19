@@ -1,10 +1,21 @@
+'use client'
+
 import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
+import { useScrollAnimation } from '@/hooks/use-scroll-animation'
 
 export default function QuoteSummarySection() {
+  const { ref, isVisible } = useScrollAnimation()
+
   return (
-    <section id="quote" className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-20">
+    <section
+      id="quote"
+      ref={ref}
+      className={`flex min-h-screen items-center justify-center bg-gray-50 px-4 py-20 transition-[opacity,transform] duration-700 ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+      }`}
+    >
       <div className="mx-auto max-w-5xl rounded-2xl border border-gray-200 bg-white px-6 py-12 text-center shadow-sm md:px-10">
         <p className="mb-2 text-sm font-semibold text-[#003d82]">견적문의</p>
         <h2 className="text-3xl font-bold text-gray-900">처리 품목과 물량을 알려주시면 빠르게 안내드립니다</h2>

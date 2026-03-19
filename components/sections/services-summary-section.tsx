@@ -1,14 +1,22 @@
+'use client'
+
 import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
+import { useScrollAnimation } from '@/hooks/use-scroll-animation'
 
 export default function ServicesSummarySection() {
+  const { ref, isVisible } = useScrollAnimation()
+
   const services = ['PCB·FPCB·IC 기판 전문 매입', '전산장비 자산 평가 및 처리', '저장매체 보안파쇄 및 폐기']
 
   return (
     <section
       id="services"
-      className="flex min-h-screen items-center justify-center border-t border-gray-100 bg-white px-4 py-20"
+      ref={ref}
+      className={`flex min-h-screen items-center justify-center border-t border-gray-100 bg-white px-4 py-20 transition-[opacity,transform] duration-700 ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+      }`}
     >
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 flex items-end justify-between gap-4">
