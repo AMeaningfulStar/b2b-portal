@@ -11,7 +11,7 @@ export default function HeroSection() {
   const { ref: rightRef, isVisible: rightVisible } = useScrollAnimation()
 
   return (
-    <section id="home" className="relative bg-white">
+    <section id="home" className="relative min-h-screen bg-white">
       <div className="container mx-auto px-4 py-20 md:py-24 lg:py-28">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div
