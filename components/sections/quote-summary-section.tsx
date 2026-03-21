@@ -24,11 +24,11 @@ export default function QuoteSummarySection() {
         </p>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Button asChild className="bg-[#003d82] text-white hover:bg-[#002a5c]">
+          <Button className="bg-[#003d82] text-white hover:bg-[#002a5c]">
             <Link href="/quote">견적문의 페이지로 이동</Link>
           </Button>
 
-          <Button asChild variant="outline">
+          <Button variant="outline">
             <a href="tel:02-0000-0000">전화로 상담하기</a>
           </Button>
         </div>

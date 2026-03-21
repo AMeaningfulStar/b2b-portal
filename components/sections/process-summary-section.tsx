@@ -30,7 +30,7 @@ export default function ProcessSummarySection() {
             <h2 className="text-3xl font-bold text-gray-900">복잡하지 않게, 명확한 절차로 진행합니다</h2>
           </div>
 
-          <Button asChild variant="outline" className="hidden md:inline-flex">
+          <Button variant="outline" className="hidden md:inline-flex">
             <Link href="/process">전체 절차 보기</Link>
           </Button>
         </div>
@@ -46,7 +46,7 @@ export default function ProcessSummarySection() {
         </div>
 
         <div className="mt-8 md:hidden">
-          <Button asChild variant="outline">
+          <Button variant="outline">
             <Link href="/process">전체 절차 보기</Link>
           </Button>
         </div>
