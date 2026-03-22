@@ -48,7 +48,7 @@ export default function ServicesSummarySection() {
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
             <p className="mb-3 text-sm font-semibold text-[#003d82]">사업분야</p>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 md:text-4xl leading-snug">
+            <h2 className="text-3xl leading-snug font-bold tracking-tight text-gray-900 md:text-4xl">
               기업 불용 자재 처리 서비스를
               <br />
               한눈에 확인해보세요

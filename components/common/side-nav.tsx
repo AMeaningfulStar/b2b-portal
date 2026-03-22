@@ -15,7 +15,8 @@ export default function SideNav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 3
+      const headerOffset = 80
+      const scrollPosition = window.scrollY + headerOffset + window.innerHeight / 3
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const element = document.getElementById(sections[i].id)
@@ -26,7 +27,7 @@ export default function SideNav() {
       }
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
 
     return () => window.removeEventListener('scroll', handleScroll)
@@ -34,13 +35,20 @@ export default function SideNav() {
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
+    if (!element) return
+
+    const headerOffset = 40
+    const elementTop = element.getBoundingClientRect().top + window.scrollY
+    const targetTop = elementTop - headerOffset
+
+    window.scrollTo({
+      top: targetTop,
+      behavior: 'smooth',
+    })
   }
 
   return (
-    <nav className="fixed top-1/2 right-4 z-40 hidden -translate-y-1/2 flex-col items-end gap-3 lg:flex">
+    <nav className="fixed top-1/2 right-4 z-40 hidden -translate-y-1/2 flex-col items-end gap-3 bg-transparent px-3 lg:flex">
       {sections.map((section) => (
         <button
           key={section.id}
@@ -48,7 +56,6 @@ export default function SideNav() {
           className="group relative flex items-center"
           aria-label={section.label}
         >
-          {/* Tooltip */}
           <span
             className={`absolute right-8 rounded bg-gray-900 px-2 py-1 text-xs font-medium whitespace-nowrap text-white transition-all duration-300 ${
               activeSection === section.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
@@ -57,7 +64,6 @@ export default function SideNav() {
             {section.label}
           </span>
 
-          {/* Dot */}
           <span
             className={`block rounded-full transition-all duration-300 ${
               activeSection === section.id

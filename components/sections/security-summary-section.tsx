@@ -31,11 +31,11 @@ export default function TrustSection() {
     <section
       id="security"
       ref={ref}
-      className={`px-4 py-20 transition-all duration-700 min-h-screen flex items-center justify-center ${
+      className={`flex min-h-screen items-center justify-center px-4 py-20 transition-all duration-700 ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
       }`}
     >
-      <div className="mx-auto max-w-7xl flex items-center justify-center">
+      <div className="mx-auto flex max-w-7xl items-center justify-center">
         {/* 메인 박스 */}
         <div className="rounded-3xl bg-[#0f172a] px-6 py-12 text-white md:px-12">
           {/* Header */}

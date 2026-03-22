@@ -35,7 +35,7 @@ export default function QuoteSummarySection() {
     <section
       id="quote"
       ref={ref}
-      className={`bg-gray-50 px-4 py-20 transition-[opacity,transform] duration-700 lg:py-28 ${
+      className={`flex min-h-screen items-center justify-center bg-gray-50 px-4 py-20 transition-[opacity,transform] duration-700 lg:py-28 ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
       }`}
     >
