@@ -40,7 +40,7 @@ export default function ServicesSummarySection() {
     <section
       id="services"
       ref={ref}
-      className={`min-h-screen border-t border-gray-100 bg-white px-4 py-20 transition-[opacity,transform] duration-700 lg:py-28 ${
+      className={`min-h-screen scroll-mt-14 border-t border-gray-100 bg-white px-4 py-20 transition-[opacity,transform] duration-700 lg:py-28 ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
       }`}
     >

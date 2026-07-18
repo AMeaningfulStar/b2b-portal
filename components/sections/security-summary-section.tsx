@@ -31,7 +31,7 @@ export default function TrustSection() {
     <section
       id="security"
       ref={ref}
-      className={`flex min-h-screen items-center justify-center px-4 py-20 transition-all duration-700 ${
+      className={`flex min-h-screen scroll-mt-14 items-center justify-center px-4 py-20 transition-all duration-700 ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
       }`}
     >
