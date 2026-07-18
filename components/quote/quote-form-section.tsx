@@ -46,7 +46,7 @@ export default function QuoteFormSection() {
   const nextSteps = ['문의 접수', '내용 확인', '담당자 연락', '일정 협의 및 안내']
 
   return (
-    <section className="bg-white px-4 py-20">
+    <section id="quote" className="scroll-mt-14 bg-white px-4 py-20">
       <div className="container mx-auto">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">

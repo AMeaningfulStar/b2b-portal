@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 
 const sections = [
   { id: 'home', label: '홈' },
+  { id: 'about', label: '회사소개' },
   { id: 'services', label: '사업분야' },
   { id: 'process', label: '처리절차' },
   { id: 'security', label: '보안관리' },
