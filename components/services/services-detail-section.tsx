@@ -1,7 +1,7 @@
 import { ArrowRight, CheckCircle2, Cpu, HardDrive, Shield, Truck } from 'lucide-react'
 import Image from 'next/image'
-import Link from 'next/link'
 
+import { SectionAnchorLink } from '@/components/landing/section-anchor-link'
 import { Button } from '@/components/ui/button'
 
 const services = [
@@ -114,10 +114,10 @@ export default function ServicesDetailSection() {
 
                   <div className="mt-10">
                     <Button className="bg-[#003d82] text-white hover:bg-[#002a5c]">
-                      <Link href="/quote" className="inline-flex items-center gap-2">
+                      <SectionAnchorLink sectionId="quote" className="inline-flex items-center gap-2">
                         문의하기
                         <ArrowRight className="h-4 w-4" />
-                      </Link>
+                      </SectionAnchorLink>
                     </Button>
                   </div>
                 </div>
@@ -140,7 +140,7 @@ export default function ServicesDetailSection() {
 
           <div className="mt-8">
             <Button className="bg-white text-[#003d82] hover:bg-gray-100">
-              <Link href="/quote">불용 자재 문의하기</Link>
+              <SectionAnchorLink sectionId="quote">불용 자재 문의하기</SectionAnchorLink>
             </Button>
           </div>
         </div>

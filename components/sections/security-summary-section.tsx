@@ -1,8 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { ShieldCheck, ClipboardCheck, Truck } from 'lucide-react'
 
+import { SectionAnchorLink } from '@/components/landing/section-anchor-link'
 import { Button } from '@/components/ui/button'
 import { useScrollAnimation } from '@/hooks/use-scroll-animation'
 
@@ -73,7 +73,7 @@ export default function TrustSection() {
             <p className="text-sm text-slate-300">처리 가능 여부가 애매해도 괜찮습니다. 편하게 문의 주세요.</p>
 
             <Button className="bg-white text-[#003d82] hover:bg-gray-100">
-              <Link href="/quote">문의하기</Link>
+              <SectionAnchorLink sectionId="quote">문의하기</SectionAnchorLink>
             </Button>
           </div>
         </div>

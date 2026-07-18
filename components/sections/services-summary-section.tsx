@@ -1,8 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { Cpu, HardDrive, Shield, Truck } from 'lucide-react'
 
+import { SectionAnchorLink } from '@/components/landing/section-anchor-link'
 import { Button } from '@/components/ui/button'
 import { useScrollAnimation } from '@/hooks/use-scroll-animation'
 
@@ -63,7 +63,7 @@ export default function ServicesSummarySection() {
             variant="outline"
             className="w-fit border-[#003d82] text-[#003d82] hover:bg-[#003d82] hover:text-white"
           >
-            <Link href="/services">사업분야 자세히 보기</Link>
+            <SectionAnchorLink sectionId="process">처리 절차 확인하기</SectionAnchorLink>
           </Button>
         </div>
 
@@ -93,7 +93,7 @@ export default function ServicesSummarySection() {
 
         <div className="mt-10 flex justify-center md:hidden">
           <Button variant="outline" className="border-[#003d82] text-[#003d82] hover:bg-[#003d82] hover:text-white">
-            <Link href="/services">사업분야 자세히 보기</Link>
+            <SectionAnchorLink sectionId="process">처리 절차 확인하기</SectionAnchorLink>
           </Button>
         </div>
       </div>

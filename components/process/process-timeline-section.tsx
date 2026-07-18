@@ -1,8 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { Camera, FileCheck, Scale, Search, Truck, ClipboardCheck, CheckCircle2 } from 'lucide-react'
 
+import { SectionAnchorLink } from '@/components/landing/section-anchor-link'
 import { Button } from '@/components/ui/button'
 
 const steps = [
@@ -101,7 +101,7 @@ export default function ProcessDetailSection() {
 
           <div className="mt-6">
             <Button className="bg-white text-[#003d82] hover:bg-gray-100">
-              <Link href="/quote">불용 자재 문의하기</Link>
+              <SectionAnchorLink sectionId="quote">불용 자재 문의하기</SectionAnchorLink>
             </Button>
           </div>
         </div>
