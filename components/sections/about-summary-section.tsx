@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 const coreValues = [
   {
     title: '전문성',
@@ -24,7 +26,7 @@ export default function AboutSummarySection() {
   return (
     <section id="about" className="scroll-mt-14 border-t border-gray-100 bg-gray-50 px-4 py-20 break-keep lg:py-28">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div>
             <p className="mb-3 text-sm font-semibold text-[#003d82]">회사소개</p>
             <h2 className="text-3xl leading-snug font-bold tracking-tight text-gray-900 md:text-4xl">
@@ -41,18 +43,30 @@ export default function AboutSummarySection() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:p-8">
-            <p className="text-sm font-semibold text-[#003d82]">운영 기준</p>
-            <ul className="mt-6 space-y-4 text-sm leading-6 text-gray-700">
-              {operatingStandards.map((standard) => (
-                <li key={standard} className="flex gap-3">
-                  <span aria-hidden="true" className="font-semibold text-[#003d82]">
-                    •
-                  </span>
-                  <span>{standard}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="space-y-6">
+            <div className="relative aspect-3/2 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+              <Image
+                src="/images/about-material-inspection.webp"
+                alt="전자 불용 자재의 품목과 상태를 확인하는 검수 현장"
+                fill
+                sizes="(max-width: 1023px) calc(100vw - 2rem), 46vw"
+                className="object-cover object-center"
+              />
+            </div>
+
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:p-8">
+              <p className="text-sm font-semibold text-[#003d82]">운영 기준</p>
+              <ul className="mt-6 space-y-4 text-sm leading-6 text-gray-700">
+                {operatingStandards.map((standard) => (
+                  <li key={standard} className="flex gap-3">
+                    <span aria-hidden="true" className="font-semibold text-[#003d82]">
+                      •
+                    </span>
+                    <span>{standard}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 

@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 import { SectionAnchorLink } from '@/components/landing/section-anchor-link'
 import { Button } from '@/components/ui/button'
 import { useScrollAnimation } from '@/hooks/use-scroll-animation'
@@ -60,6 +62,16 @@ export default function ProcessSummarySection() {
           >
             <SectionAnchorLink sectionId="quote">견적 문의하기</SectionAnchorLink>
           </Button>
+        </div>
+
+        <div className="relative mx-auto mb-10 aspect-video w-full max-w-[996px] overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-sm">
+          <Image
+            src="/images/process-site-collection.webp"
+            alt="기업 현장에서 전자 불용 자재를 확인하고 수거하는 과정"
+            fill
+            sizes="(max-width: 1279px) calc(100vw - 2rem), 1280px"
+            className="object-cover object-[52%_center]"
+          />
         </div>
 
         {/* Steps */}

@@ -1,6 +1,7 @@
 'use client'
 
 import { Cpu, HardDrive, Shield, Truck } from 'lucide-react'
+import Image from 'next/image'
 
 import { SectionAnchorLink } from '@/components/landing/section-anchor-link'
 import { Button } from '@/components/ui/button'
@@ -12,24 +13,32 @@ const services = [
     title: '전자·전기 불용 자재 처리',
     description: '기업에서 사용하지 않게 된 전자·전기 계열 자재를 정리하고 체계적으로 처리합니다.',
     tags: ['불용 자재', '자산 정리'],
+    image: '/images/service-electronic-assets.webp',
+    imageAlt: '기업용 전산장비와 전자 불용 자재를 분류하는 현장',
   },
   {
     icon: HardDrive,
     title: '회로기판 및 전자 스크랩 처리',
     description: 'PCB, 전자부품, 각종 전자 스크랩 자재를 품목에 맞게 분류하고 처리합니다.',
     tags: ['PCB', '전자 스크랩'],
+    image: '/images/service-pcb-scrap.webp',
+    imageAlt: '다양한 PCB 회로기판과 전자 스크랩',
   },
   {
     icon: Shield,
     title: '귀금속 및 희귀금속 회수',
     description: '전자부품 및 산업 자재에 포함된 귀금속·희귀금속을 선별하여 자원 가치를 검토합니다.',
     tags: ['귀금속', '희귀금속'],
+    image: '/images/service-metal-recovery.webp',
+    imageAlt: '전자부품에서 회수 가능한 금속 자원을 선별하는 현장',
   },
   {
     icon: Truck,
     title: '현장 수거 및 맞춤 처리',
     description: '기업 일정과 현장 상황에 맞춰 방문 수거 및 맞춤형 처리 서비스를 제공합니다.',
     tags: ['현장 수거', '맞춤 서비스'],
+    image: '/images/service-on-site-collection.webp',
+    imageAlt: '기업 현장에서 전자 불용 자재를 수거하는 작업',
   },
 ]
 
@@ -71,21 +80,33 @@ export default function ServicesSummarySection() {
           {services.map((service) => (
             <div
               key={service.title}
-              className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-[#003d82]/30 hover:shadow-md"
+              className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-[#003d82]/30 hover:shadow-md"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#003d82]/10 text-[#003d82]">
-                <service.icon className="h-6 w-6" />
+              <div className="relative aspect-4/3 w-full overflow-hidden bg-gray-100">
+                <Image
+                  src={service.image}
+                  alt={service.imageAlt}
+                  fill
+                  sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) calc(50vw - 2.5rem), 25vw"
+                  className="object-cover object-center"
+                />
               </div>
 
-              <h3 className="mt-5 text-xl font-semibold text-gray-900">{service.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-gray-600">{service.description}</p>
+              <div className="flex flex-1 flex-col p-6">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#003d82]/10 text-[#003d82]">
+                  <service.icon className="h-6 w-6" />
+                </div>
 
-              <div className="mt-5 flex flex-wrap gap-2">
-                {service.tags.map((tag) => (
-                  <span key={tag} className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">
-                    {tag}
-                  </span>
-                ))}
+                <h3 className="mt-5 text-xl font-semibold text-gray-900">{service.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-gray-600">{service.description}</p>
+
+                <div className="mt-auto flex flex-wrap gap-2 pt-5">
+                  {service.tags.map((tag) => (
+                    <span key={tag} className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
