@@ -1,9 +1,9 @@
 'use client'
 
-import Link from 'next/link'
 import { useState } from 'react'
 import { ArrowRight, PhoneCall } from 'lucide-react'
 
+import { SectionAnchorLink } from '@/components/landing/section-anchor-link'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -65,10 +65,10 @@ export default function QuoteSummarySection() {
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button className="bg-white text-[#003d82] hover:bg-gray-100">
-                  <Link href="/quote" className="inline-flex items-center gap-2">
+                  <SectionAnchorLink sectionId="quote" className="inline-flex items-center gap-2">
                     불용 자재 문의하기
                     <ArrowRight className="h-4 w-4" />
-                  </Link>
+                  </SectionAnchorLink>
                 </Button>
 
                 <Button

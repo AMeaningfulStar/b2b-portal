@@ -3,21 +3,14 @@
 import { Menu, Phone, X } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
-import { usePathname } from 'next/navigation'
 
+import { navigationSections } from '@/components/landing/section-navigation'
 import { Button } from '@/components/ui/button'
-
-const menuItems = [
-  { label: '홈', href: '/' },
-  { label: '회사소개', href: '/about' },
-  { label: '사업분야', href: '/services' },
-  { label: '처리절차', href: '/process' },
-  { label: '견적문의', href: '/quote' },
-]
+import { useSectionNavigation } from '@/hooks/use-section-navigation'
 
 export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const pathname = usePathname()
+  const { activeSection, handleSectionClick } = useSectionNavigation()
 
   return (
     <header className="fixed top-0 right-0 left-0 z-50 border-b border-gray-200 bg-white">
@@ -29,22 +22,20 @@ export function SiteHeader() {
             </Link>
           </div>
 
-          <nav className="hidden items-center space-x-8 md:flex">
-            {menuItems.map((item) => {
-              const isActive = pathname === item.href
-
-              return (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className={`text-sm font-medium transition-colors ${
-                    isActive ? 'text-[#003d82]' : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              )
-            })}
+          <nav aria-label="주요 메뉴" className="hidden items-center space-x-8 md:flex">
+            {navigationSections.map((section) => (
+              <Link
+                key={section.id}
+                href={section.href}
+                onClick={(event) => handleSectionClick(event, section.id)}
+                aria-current={activeSection === section.id ? 'location' : undefined}
+                className={`rounded-sm text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-[#003d82] focus-visible:ring-offset-4 focus-visible:outline-none ${
+                  activeSection === section.id ? 'text-[#003d82]' : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                {section.label}
+              </Link>
+            ))}
           </nav>
 
           <div className="hidden items-center space-x-3 md:flex">
@@ -84,23 +75,23 @@ export function SiteHeader() {
 
         {isMenuOpen && (
           <div className="border-t border-gray-200 py-4 md:hidden">
-            <nav className="flex flex-col space-y-3">
-              {menuItems.map((item) => {
-                const isActive = pathname === item.href
-
-                return (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className={`text-sm font-medium transition-colors ${
-                      isActive ? 'text-[#003d82]' : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                )
-              })}
+            <nav aria-label="모바일 주요 메뉴" className="flex flex-col space-y-3">
+              {navigationSections.map((section) => (
+                <Link
+                  key={section.id}
+                  href={section.href}
+                  aria-current={activeSection === section.id ? 'location' : undefined}
+                  className={`rounded-sm text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-[#003d82] focus-visible:ring-offset-2 focus-visible:outline-none ${
+                    activeSection === section.id ? 'text-[#003d82]' : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                  onClick={(event) => {
+                    handleSectionClick(event, section.id)
+                    setIsMenuOpen(false)
+                  }}
+                >
+                  {section.label}
+                </Link>
+              ))}
 
               <div className="flex flex-col space-y-2 border-t border-gray-200 pt-3">
                 <Button

@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+import { SectionAnchorLink } from '@/components/landing/section-anchor-link'
 import { Button } from '@/components/ui/button'
 import { useScrollAnimation } from '@/hooks/use-scroll-animation'
 
@@ -58,7 +58,7 @@ export default function ProcessSummarySection() {
             variant="outline"
             className="w-fit border-[#003d82] text-[#003d82] hover:bg-[#003d82] hover:text-white"
           >
-            <Link href="/process">전체 절차 보기</Link>
+            <SectionAnchorLink sectionId="quote">견적 문의하기</SectionAnchorLink>
           </Button>
         </div>
 
