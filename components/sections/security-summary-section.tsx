@@ -1,6 +1,7 @@
 'use client'
 
 import { ShieldCheck, ClipboardCheck, Truck } from 'lucide-react'
+import Image from 'next/image'
 
 import { SectionAnchorLink } from '@/components/landing/section-anchor-link'
 import { Button } from '@/components/ui/button'
@@ -37,18 +38,31 @@ export default function TrustSection() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-center">
         {/* 메인 박스 */}
-        <div className="rounded-3xl bg-[#0f172a] px-6 py-12 text-white md:px-12">
+        <div className="w-full rounded-3xl bg-[#0f172a] px-6 py-12 text-white md:px-12">
           {/* Header */}
-          <div className="mb-10 max-w-2xl">
-            <p className="mb-3 text-sm font-semibold text-blue-300">TRUST & SAFETY</p>
-            <h2 className="text-3xl leading-tight font-bold md:text-4xl">
-              맡겨도 되는 이유,
-              <br />
-              처리 기준이 다릅니다
-            </h2>
-            <p className="mt-4 text-sm leading-7 text-slate-300 md:text-base">
-              단순 수거가 아닌, 자재 확인부터 수거, 처리까지 전 과정을 책임 있게 진행합니다.
-            </p>
+          <div className="mb-10 grid items-center gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
+            <div>
+              <p className="mb-3 text-sm font-semibold text-blue-300">TRUST & SAFETY</p>
+              <h2 className="text-3xl leading-tight font-bold md:text-4xl">
+                맡겨도 되는 이유,
+                <br />
+                처리 기준이 다릅니다
+              </h2>
+              <p className="mt-4 text-sm leading-7 text-slate-300 md:text-base">
+                단순 수거가 아닌, 자재 확인부터 수거, 처리까지 전 과정을 책임 있게 진행합니다.
+              </p>
+            </div>
+
+            <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/15 bg-slate-900 shadow-lg">
+              <Image
+                src="/images/security-storage-destruction.webp"
+                alt="기업용 저장매체를 보안 파쇄 장비로 폐기하는 현장"
+                fill
+                sizes="(max-width: 1023px) calc(100vw - 5rem), 52vw"
+                className="object-cover object-center"
+              />
+              <div aria-hidden="true" className="absolute inset-0 bg-[#0f172a]/5" />
+            </div>
           </div>
 
           {/* 카드 */}
