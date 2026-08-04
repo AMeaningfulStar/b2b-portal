@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+import { SectionAnchorLink } from '@/components/landing/section-anchor-link'
 import { Button } from '@/components/ui/button'
 import { useScrollAnimation } from '@/hooks/use-scroll-animation'
 
@@ -39,7 +39,7 @@ export default function ProcessSummarySection() {
     <section
       id="process"
       ref={ref}
-      className={`flex min-h-screen items-center justify-center bg-gray-50 px-4 py-20 transition-all duration-700 ${
+      className={`flex min-h-screen scroll-mt-14 items-center justify-center bg-gray-50 px-4 py-20 transition-all duration-700 ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
       }`}
     >
@@ -58,7 +58,7 @@ export default function ProcessSummarySection() {
             variant="outline"
             className="w-fit border-[#003d82] text-[#003d82] hover:bg-[#003d82] hover:text-white"
           >
-            <Link href="/process">전체 절차 보기</Link>
+            <SectionAnchorLink sectionId="quote">견적 문의하기</SectionAnchorLink>
           </Button>
         </div>
 

@@ -11,7 +11,7 @@ export default function HeroSection() {
   const { ref: rightRef, isVisible: rightVisible } = useScrollAnimation()
 
   return (
-    <section id="home" className="relative min-h-screen bg-white">
+    <section id="home" className="relative min-h-screen scroll-mt-14 bg-white">
       <div className="container mx-auto px-4 py-20 md:py-24 lg:py-28">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div
@@ -74,7 +74,14 @@ export default function HeroSection() {
             }`}
           >
             <div className="relative aspect-4/3 overflow-hidden rounded-lg shadow-2xl">
-              <Image src="https://placehold.co/400x300/png" alt="전자부품 수거 현장" fill className="object-cover" />
+              <Image
+                src="/images/hero-electronic-scrap-collection.webp"
+                alt="전자스크랩과 기업 전산자산을 분류하는 작업 현장"
+                fill
+                preload
+                sizes="(max-width: 1023px) calc(100vw - 2rem), 50vw"
+                className="object-cover object-[58%_center]"
+              />
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea'
 
 export default function QuoteFormSection() {
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isPrototypeNoticeOpen, setIsPrototypeNoticeOpen] = useState(false)
   const [agreed, setAgreed] = useState(false)
   const [inquiryType, setInquiryType] = useState('')
 
@@ -29,7 +29,7 @@ export default function QuoteFormSection() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setIsSubmitted(true)
+    setIsPrototypeNoticeOpen(true)
   }
 
   const handleInquiryTypeChange = (value: string | null) => {
@@ -39,14 +39,14 @@ export default function QuoteFormSection() {
   const guideItems = [
     '자재 사진이 있으면 함께 준비해 주세요.',
     '정확한 수량을 모르셔도 대략적으로 적어주시면 됩니다.',
-    '보관 장소나 현장 상황을 함께 적어주시면 더 빠르게 안내가 가능합니다.',
+    '실제 상담 시 보관 장소나 현장 상황을 함께 알려주시면 안내에 도움이 됩니다.',
     '처리 가능 여부가 애매한 품목도 문의 가능합니다.',
   ]
 
   const nextSteps = ['문의 접수', '내용 확인', '담당자 연락', '일정 협의 및 안내']
 
   return (
-    <section className="bg-white px-4 py-20">
+    <section id="quote" className="scroll-mt-14 bg-white px-4 py-20">
       <div className="container mx-auto">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
@@ -57,8 +57,8 @@ export default function QuoteFormSection() {
                   불용 자재 처리 문의
                 </h2>
                 <p className="text-base leading-7 text-gray-600">
-                  정확한 품목명이나 수량을 모르셔도 괜찮습니다. 자재 사진, 대략적인 수량, 보관 상태 등을 함께 남겨주시면
-                  담당자가 확인 후 안내드립니다.
+                  정확한 품목명이나 수량을 모르셔도 괜찮습니다. 현재 폼은 작성 흐름을 확인하기 위한 UI 시연용이며,
+                  입력한 내용은 실제 문의로 전송되지 않습니다.
                 </p>
               </div>
 
@@ -75,7 +75,7 @@ export default function QuoteFormSection() {
               </div>
 
               <div className="rounded-2xl border border-gray-200 bg-white p-6">
-                <p className="text-sm font-semibold text-[#003d82]">문의 후 진행 절차</p>
+                <p className="text-sm font-semibold text-[#003d82]">실제 문의 기능 연동 후 진행 절차</p>
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   {nextSteps.map((step, index) => (
                     <div key={step} className="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
@@ -185,11 +185,13 @@ export default function QuoteFormSection() {
                     onCheckedChange={(checked) => setAgreed(checked as boolean)}
                   />
                   <Label htmlFor="privacy" className="cursor-pointer text-sm leading-relaxed text-gray-600">
-                    개인정보 수집 및 이용에 동의합니다. (필수)
+                    개인정보 수집 및 이용 동의 항목을 확인했습니다. (UI 시연용 필수)
                   </Label>
                 </div>
 
-                <p className="text-xs leading-5 text-gray-500">접수된 문의는 담당자 확인 후 순차적으로 연락드립니다.</p>
+                <p className="text-xs leading-5 text-gray-500">
+                  현재는 UI 시연 단계로, 작성한 정보는 저장되거나 이메일·API로 전송되지 않습니다.
+                </p>
 
                 <Button
                   type="submit"
@@ -197,19 +199,19 @@ export default function QuoteFormSection() {
                   disabled={!agreed}
                 >
                   <Send className="mr-2 h-5 w-5" />
-                  문의 접수하기
+                  제출 동작 확인하기
                 </Button>
               </form>
             </div>
           </div>
 
-          <Dialog open={isSubmitted} onOpenChange={setIsSubmitted}>
+          <Dialog open={isPrototypeNoticeOpen} onOpenChange={setIsPrototypeNoticeOpen}>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>문의 접수 완료</DialogTitle>
+                <DialogTitle>UI 시연 안내</DialogTitle>
                 <DialogDescription className="space-y-3">
-                  <p>문의가 정상적으로 접수되었습니다.</p>
-                  <p>담당자가 내용을 확인한 후 순차적으로 안내드리겠습니다.</p>
+                  <p>현재 견적 폼은 화면과 입력 흐름을 확인하기 위한 프로토타입입니다.</p>
+                  <p>작성한 내용은 저장되지 않으며 이메일, API 또는 담당자에게 전송되지 않습니다.</p>
                 </DialogDescription>
               </DialogHeader>
             </DialogContent>
